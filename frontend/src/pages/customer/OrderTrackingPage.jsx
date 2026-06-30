@@ -98,27 +98,52 @@ export default function OrderTrackingPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Token */}
-      <div className={`py-10 px-4 text-center transition-colors ${isReady ? 'bg-green-600' : 'bg-dark-800'}`}>
-        <p className="text-white/70 text-sm mb-2">Your Token Number</p>
-        <div className={`text-7xl font-display font-black text-white mb-2 ${isReady ? 'animate-bounce' : ''}`}>
+      <div
+  className={`py-16 px-4 text-center shadow-xl ${
+    isReady
+      ? "bg-gradient-to-r from-green-600 to-emerald-500"
+      : "bg-gradient-to-r from-slate-900 to-slate-700"
+  }`}
+>
+        <p className="text-white/70 text-sm mb-6">Your Token Number</p>
+        <div className={`text-7xl font-display font-black text-white mb-6 ${isReady ? 'animate-bounce' : ''}`}>
           #{order.tokenNumber}
         </div>
-        {isReady ? (
-          <div className="bg-white/20 text-white px-4 py-2 rounded-full text-sm font-bold inline-flex items-center gap-2">
-            <Bell size={14} className="animate-pulse" />
-            Your order is ready! Please collect.
-          </div>
-        ) : (
-          <div className="flex items-center justify-center gap-2 text-white/80 text-sm">
-            <Clock size={14} />
-            <span>Est. wait: ~{order.estimatedWaitTime || '?'} min</span>
-            {order.queuePosition && (
-              <span className="bg-white/20 px-2 py-0.5 rounded-full">
-                Position #{order.queuePosition}
-              </span>
-            )}
-          </div>
-        )}
+        <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-6">
+
+  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur">
+    <p className="text-white/70 text-xs uppercase">
+      Queue Position
+    </p>
+
+    <p className="text-3xl font-bold text-white mt-2">
+      {order.queuePosition || "-"}
+    </p>
+  </div>
+
+  <div className="bg-white/10 rounded-2xl p-4 backdrop-blur">
+    <p className="text-white/70 text-xs uppercase">
+      Estimated Wait
+    </p>
+
+    <p className="text-3xl font-bold text-white mt-2">
+      {order.estimatedWaitTime || "?"} min
+    </p>
+  </div>
+
+</div>
+
+{isReady ? (
+  <div className="inline-flex items-center gap-2 bg-green-500 px-6 py-3 rounded-full text-white font-bold shadow-lg">
+    <Bell size={18} className="animate-pulse" />
+    Ready for Pickup
+  </div>
+) : (
+  <div className="inline-flex items-center gap-2 bg-white/10 px-6 py-3 rounded-full text-white font-medium">
+    <Clock size={18} />
+    Preparing your order...
+  </div>
+)}
       </div>
 
       <main className="max-w-lg mx-auto px-4 py-6 space-y-4">
@@ -127,19 +152,20 @@ export default function OrderTrackingPage() {
     <p className="text-sm text-gray-600">
       Show this PIN at the counter
     </p>
-
-    <div className="text-6xl font-black tracking-widest text-yellow-600 mt-2">
+<div className="text-6xl font-black tracking-[12px] text-yellow-600 mt-4">
       {order.pickupPin}
     </div>
 
-    <p className="text-xs text-gray-500 mt-2">
+    <p className="text-xs text-gray-600 mt-4">
       Staff will ask this PIN before handing over your order.
     </p>
   </div>
 )}
         {/* Status Steps */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
-          <h3 className="font-semibold text-gray-700 mb-5">Order Status</h3>
+        <div className="bg-white rounded-3xl p-5 shadow-sm">
+<h3 className="text-lg font-bold text-gray-800 mb-5 flex items-center gap-2">
+  🚀 Live Order Progress
+</h3>
           <div className="relative">
             {/* Progress line */}
             <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gray-100" />
@@ -174,7 +200,7 @@ export default function OrderTrackingPage() {
         </div>
 
         {/* Order Items */}
-        <div className="bg-white rounded-2xl p-5 shadow-sm">
+        <div className="bg-white rounded-3xl p-5 shadow-sm">
           <h3 className="font-semibold text-gray-700 mb-3">Order Summary</h3>
           <div className="space-y-2">
             {order.items?.map((item, i) => (

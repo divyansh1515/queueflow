@@ -1,0 +1,30 @@
+# ─── Server ───────────────────────────────────────────────────────────────────
+PORT=5000
+NODE_ENV=development
+CLIENT_URL=http://localhost:3000
+
+# ─── MongoDB ──────────────────────────────────────────────────────────────────
+MONGODB_URI=mongodb+srv://thevanshvermaa_db_user:37E5Akv7BSJNIkBe@cluster0.4imdquo.mongodb.net/queueflow?retryWrites=true&w=majority&appName=Cluster0
+# ─── JWT ──────────────────────────────────────────────────────────────────────
+JWT_SECRET=mysecret123456789
+JWT_EXPIRES_IN=7d
+
+# ─── Razorpay ─────────────────────────────────────────────────────────────────
+RAZORPAY_KEY_ID=test
+RAZORPAY_KEY_SECRET=test
+
+# ─── Firebase Admin SDK ───────────────────────────────────────────────────────
+FIREBASE_PROJECT_ID=test
+FIREBASE_PRIVATE_KEY="test"
+FIREBASE_CLIENT_EMAIL=test@test.com
+
+# ─── QR / Shop ────────────────────────────────────────────────────────────────
+SHOP_ID=default-shop
+QR_BASE_URL=http://localhost:3000/order
+
+
+# ─── AI Service ───────────────────────────────────────────────────────────────
+AI_SERVICE_URL=http://localhost:8000
+
+# ─── ESP32 ────────────────────────────────────────────────────────────────────
+ESP32_API_KEY=test123

@@ -19,7 +19,7 @@ const analyticsRoutes = require('./routes/analytics');
 const qrRoutes = require('./routes/qr');
 const iotRoutes = require('./routes/iot');
 const notificationRoutes = require('./routes/notification');
-const shopRoutes = require('./routes/shop');
+const shopRoutes = require('./routes/Shop');
 const app = express();
 const server = http.createServer(app);
 

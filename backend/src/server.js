@@ -31,13 +31,16 @@ initSocket(server);
 
 // ─── Global Middleware ─────────────────────────────────────────────────────
 app.use(helmet());
-app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "http://192.168.31.215:3000"
-  ],
-  credentials: true
-}));
+
+ app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://queueflow-beta.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 app.use(morgan('combined', {
   stream: {
     write: msg => logger.info(msg.trim())
